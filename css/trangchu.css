@@ -511,7 +511,3 @@ html {
 .intro_title a:hover {
     background-size: 100% 5px;
 }
-
-@media (max-width: 768px) {
-    nav ul { display: none; }
-}
