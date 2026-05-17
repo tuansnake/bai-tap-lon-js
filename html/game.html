@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Game Review</title>
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<div id="image-lightbox" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999; justify-content: center; align-items: center; cursor: zoom-out;">
+    <img id="lightbox-img" src="" style="max-width: 90%; max-height: 85%; object-fit: contain; border: 3px solid #ff3c3c; border-radius: 8px; box-shadow: 0 0 30px rgba(255, 60, 60, 0.5);">
+</div>
+<body>
+
+<header>
+    <div id="global-navbar"></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <img id="hero-image">
+
+    <div class="hero-content">
+
+        <span class="category" id="game-genre"></span>
+
+        <h1 id="game-name"></h1>
+
+        <p id="game-desc"></p>
+
+    </div>
+
+</section>
+
+<!-- MAIN -->
+<main class="container">
+
+    <section class="main-content">
+
+        <div class="review-card">
+
+            <h2>Đánh giá tổng quan</h2>
+
+            <p id="full-review"></p>
+
+        </div>
+
+        <div class="screenshots">
+
+            <h2>Hình ảnh game</h2>
+
+            <div class="gallery" id="gallery"></div>
+
+        </div>
+
+    </section>
+
+    <aside class="sidebar">
+
+        <div class="score-box">
+
+            <h3>REVIEW SCORE</h3>
+
+            <div class="score" id="game-rating"></div>
+
+        </div>
+
+        <div class="meta-box">
+
+            <div class="meta-item">
+                <span>Nhà phát hành</span>
+                <h4 id="game-publisher"></h4>
+            </div>
+
+            <div class="meta-item">
+                <span>Gameplay</span>
+                <h4 id="gameplay"></h4>
+            </div>
+
+            <div class="meta-item">
+                <span>Graphics</span>
+                <h4 id="graphics"></h4>
+            </div>
+
+            <div class="meta-item">
+                <span>Sound</span>
+                <h4 id="sound"></h4>
+            </div>
+
+        </div>
+
+    </aside>
+
+</main>
+
+<footer>
+    <div id="global-footer"></div>
+</footer>
+<script type="module" src="../js/default.js"></script>
+<script src="../js/game.js"></script>
+
+</body>
+
+</html>

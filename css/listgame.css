@@ -1,0 +1,162 @@
+/* =======================================================================================
+   1. ĐỊNH CẤU HÌNH BIẾN TOÀN CỤC & RESET MẶC ĐỊNH
+   ======================================================================================= */
+:root {
+    --bg-main: rgb(26, 26, 26);     
+    --bg-card: #1e1e1e;
+    --color-text: #ffffff;
+    --color-muted: #9e9e9e;
+    --color-primary: red;
+    --color-primary-hover: #c11f22;
+    --border-color: #2a2a2a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    padding-top: 80px; /* Chừa khoảng trống đúng bằng chiều cao Navbar cố định, không lo bị che mất chữ */
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+    
+    /* ĐÂY NÀY! Khai báo thuộc tính này ở thẻ html, trình duyệt sẽ tự hiểu 
+       toàn bộ các liên kết Anchor Link khi cuộn trên trang này đều phải 
+       thụt xuống 100px để chừa chỗ cho Navbar, tự động chuẩn chỉ cho TẤT CẢ CÁC MỤC */
+    scroll-padding-top: 100px !important; 
+}
+
+/* =======================================================================================
+   2. KHU VỰC HIỂN THỊ DANH SÁCH GAME (CARD GRID) - CHỈ SỬA MAIN CỦA LIST
+   ======================================================================================= */
+.container {
+    max-width: 1200px;
+    margin: 60px auto; /* Điều chỉnh lại khoảng cách với slider và navbar */
+    padding: 0 20px;
+}
+
+.game-section {
+    margin-bottom: 70px;
+    scroll-margin-top: 90px;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-left: 5px solid var(--color-primary);
+    padding-left: 15px;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; /* Ép đồng bộ font chữ tiêu đề sáng loáng */
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+/* --- Thiết kế khối Game Card --- */
+.game-card {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border-color: #444;
+}
+
+.game-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 180px;
+}
+
+.game-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.game-score {
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: 3px solid var(--bg-card);
+}
+
+.game-content {
+    padding: 25px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.game-category {
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.game-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+    color: var(--color-text);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.game-card:hover .game-title {
+    color: var(--color-primary);
+}
+
+.game-meta {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-bottom: 12px;
+}
+
+.game-desc {
+    font-size: 0.85rem;
+    color: #cccccc;
+    margin-bottom: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+}
+
+/* --- Responsive thiết bị di động --- */
+@media (max-width: 768px) {
+    nav ul { display: none; }
+    .auth-container { padding-right: 20px; }
+}

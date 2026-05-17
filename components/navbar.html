@@ -1,0 +1,47 @@
+<nav class="navbar">
+    <div class="logo"><span class="p">PTIT</span> <span class="g">GAME</span></div>
+    <ul class="nav_links">
+        <li><a href="trangchu.html">Trang chủ</a></li>
+        <li><a href="listgame.html#danh_gia_game">Game</a></li>
+        <li><a href="listgame.html#gaming_gear">Gaming gear</a></li>
+        <li><a href="listgame.html#eSports">eSports</a></li>
+        <li><a href="listgame.html#tin_tuc">Tin tức</a></li>
+        <li><a href="https://www.facebook.com/huy.tuan.638956" target="blank">Quảng cáo</a></li>
+    </ul>
+    
+    <div class="auth-container">
+        <button id="loginBtn" class="btn-login">Đăng nhập</button>
+        
+        <div id="userProfile" class="user-profile hidden">
+            <img src="https://i.pinimg.com/originals/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg" alt="User Avatar" class="avatar">
+            <div class="dropdown-menu">
+                <a href="profile.html"><i class="fa-solid fa-user"></i> Hồ sơ</a>
+                <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id="loginSidebar" class="login-sidebar">
+    <div class="sidebar-header">
+        <h3>ĐĂNG NHẬP</h3>
+        <button id="closeSidebar" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="loginForm" class="sidebar-form">
+        <div class="form-group">
+            <label for="username">Tên đăng nhập hoặc Email</label>
+            <input type="text" id="username" placeholder="Tài khoản" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" placeholder="Mật khẩu" required>
+        </div>
+        <div class="form-options">
+            <label><input type="checkbox"> Ghi nhớ</label>
+            <a href="#">Quên mật khẩu?</a>
+        </div>
+        <button type="submit" class="btn-submit-login">Đăng Nhập</button>
+    </form>
+</div>
+
+<div id="sidebarOverlay" class="sidebar-overlay"></div>

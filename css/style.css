@@ -1,0 +1,423 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#111;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:1.7;
+}
+
+/* HERO */
+
+.hero{
+    height:80vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(40%);
+}
+
+.hero-content{
+
+    position:absolute;
+
+    bottom:80px;
+    left:80px;
+
+    max-width:700px;
+}
+
+.category{
+    background:#ff3c3c;
+    padding:8px 14px;
+    border-radius:5px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.hero-content h1{
+    font-size:70px;
+    margin-top:20px;
+}
+
+.hero-content p{
+    margin-top:20px;
+    color:#ddd;
+    font-size:18px;
+}
+
+/* MAIN */
+
+.container{
+    width:90%;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:2fr 1fr;
+
+    gap:40px;
+
+    margin-top:60px;
+}
+
+/* REVIEW CARD */
+
+.review-card{
+
+    background:#1a1a1a;
+
+    padding:40px;
+
+    border-radius:10px;
+
+    margin-bottom:40px;
+}
+
+.review-card h2{
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:sticky;
+    top:100px;
+    height:fit-content;
+}
+
+.score-box{
+
+    background:#ff3c3c;
+
+    padding:40px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    margin-bottom:30px;
+}
+
+.score-box h3{
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+.score{
+    font-size:60px;
+    font-weight:bold;
+}
+
+.meta-box{
+    background:#1a1a1a;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.meta-item{
+    padding:20px;
+    border-bottom:1px solid #2b2b2b;
+}
+
+.meta-item span{
+    color:#999;
+    font-size:14px;
+}
+
+.meta-item h4{
+    margin-top:8px;
+    font-size:18px;
+}
+
+/* GALLERY */
+
+.screenshots h2{
+    margin-bottom:20px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out; /* Làm mượt chuyển động */
+    cursor: pointer;
+}
+
+.gallery img:hover {
+    transform: scale(1.15); /* Phóng to lên 15% khi rê chuột vào */
+    box-shadow: 0 10px 20px rgba(255, 60, 60, 0.3); /* Thêm đổ bóng ánh đỏ cho ngầu */
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .container{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content h1{
+        font-size:45px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .navbar{
+        padding:20px;
+    }
+
+}
+/* HOME */
+
+.home-hero{
+    height:70vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.home-hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(40%);
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,#111,transparent);
+}
+
+.home-content{
+    position:absolute;
+    bottom:80px;
+    left:80px;
+    max-width:700px;
+}
+
+.home-content span{
+    background:#ff3c3c;
+    padding:8px 14px;
+    border-radius:5px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.home-content h1{
+    font-size:65px;
+    margin-top:20px;
+}
+
+.home-content p{
+    margin-top:20px;
+    color:#ccc;
+    font-size:18px;
+}
+
+/* GAME GRID */
+
+.games-container{
+    width:90%;
+    margin:auto;
+    margin-top:60px;
+    margin-bottom:60px;
+}
+
+.games-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+.game-card{
+    text-decoration:none;
+    color:white;
+    background:#1a1a1a;
+    border-radius:15px;
+    overflow:hidden;
+    transition:0.4s;
+}
+
+.game-card:hover{
+    transform:translateY(-20px);
+}
+
+.game-card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.game-info{
+    padding:20px;
+}
+
+.game-info span{
+    color:#ff3c3c;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.game-info h2{
+    margin-top:10px;
+    font-size:24px;
+}
+
+.game-info p{
+    margin-top:10px;
+    color:#ccc;
+}
+
+@media(max-width:1000px){
+
+    .games-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .games-grid{
+        grid-template-columns:1fr;
+    }
+
+    .home-content h1{
+        font-size:40px;
+    }
+
+}
+
+#full-review {
+    white-space: pre-line;
+    text-align: justify;
+    font-family: 'Georgia', serif; /* Font chữ tạo cảm giác chuyên nghiệp */
+    font-size: 1.1rem;
+    color: #eee;
+    line-height: 1.8;
+}
+
+/* Làm nổi bật các đề mục giống báo chí */
+#full-review b, #full-review strong {
+    color: #ff3c3c; /* Màu đỏ thương hiệu của bạn */
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+.meta-box {
+    background: #1a1a1a;
+    border-left: 4px solid #ff3c3c; /* Thêm vạch đỏ bên trái cho chuyên nghiệp */
+    border-radius: 4px;
+}
+
+.meta-item span {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+/* Container đánh giá */
+.review-content-wrapper {
+    color: #eee;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.intro-text {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: #bbb;
+    border-left: 4px solid #ff3c3c;
+    padding-left: 20px;
+    margin-bottom: 40px;
+}
+
+/* Các mục ưu điểm */
+.highlight-item {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.highlight-item:hover {
+    background: rgba(255, 60, 60, 0.05);
+    transform: translateX(10px);
+}
+
+.highlight-item h4 {
+    color: #ff3c3c;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.highlight-item h4::before {
+    content: '✦';
+    margin-right: 10px;
+    font-size: 0.8rem;
+}
+
+/* Phần Nhược điểm */
+.cons-section {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px dashed #444;
+    border-radius: 8px;
+}
+
+.cons-section h4 {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.cons-list {
+    list-style: none;
+}
+
+.cons-list li {
+    padding-left: 20px;
+    position: relative;
+    color: #999;
+    margin-bottom: 8px;
+}
+
+.cons-list li::before {
+    content: '−';
+    position: absolute;
+    left: 0;
+    color: #ff3c3c;
+}
+
+/* Tổng kết */
+.final-verdict {
+    margin-top: 40px;
+    padding: 25px;
+    background: linear-gradient(135deg, #222 0%, #111 100%);
+    border-radius: 10px;
+    border: 1px solid #333;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.2rem;
+}

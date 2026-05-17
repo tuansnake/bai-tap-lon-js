@@ -1,0 +1,254 @@
+/* =========================== NAVIGATION BAR =========================== */
+.navbar {
+    color: white;
+    display: flex;
+    align-items: center;      /* Ép tất cả logo, chữ, avatar phải căn giữa dòng theo chiều dọc */
+    padding: 0 40px;          /* Khoảng cách đệm 2 bên lề đúng 40px giống trang chủ */
+    margin: 0;
+    background-color: rgb(13, 13, 13);
+    height: 80px;             /* Chiều cao cố định 80px */
+    position: fixed;
+    width: 100%;              /* Chiều rộng phủ hết màn hình */
+    top: 0;
+    left: 0;                  /* Neo chặt vào mép trái */
+    z-index: 1000;
+    
+    /* DÒNG CHỐT HẠ: Ép trình duyệt phải tính padding thụt vào trong, 
+       không được làm phình navbar ra ngoài màn hình gây mất khoảng cách */
+    box-sizing: border-box !important; 
+}
+
+.logo{
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav_links{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.nav_links li{
+    margin-left: 25px;
+}
+
+.nav_links a {
+    text-decoration: none;
+    color: white;
+    /* Thêm !important vào đây để khóa chết font chữ Montserrat xịn */
+    font-family: 'Montserrat', sans-serif !important; 
+}
+
+.p{
+    color: red;
+}
+
+.nav_links a:hover{
+    color: rgba(245, 245, 245, 0.825);
+}
+
+/* =========================== AUTHENTICATION & SIDEBAR =========================== */
+.auth-container {
+    margin-left: auto; 
+    display: flex;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.btn-login {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 25px; 
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-login:hover {
+    background-color: rgb(200, 0, 0);
+    transform: scale(1.05);
+}
+
+.user-profile {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-profile .avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid red;
+    object-fit: cover;
+    display: block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background-color: rgb(13, 13, 13);
+    border: 1px solid #333;
+    border-radius: 8px;
+    width: 150px;
+    display: none; 
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.dropdown-menu.show {
+    display: flex !important;
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 12px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: sans-serif;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #222;
+    color: red;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.login-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px; 
+    width: 350px;
+    height: 100vh;
+    background-color: rgb(18, 18, 18);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 2000; 
+    transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+    padding: 30px;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.login-sidebar.active {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    color: red;
+    font-size: 22px;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-close:hover {
+    color: white;
+}
+
+.sidebar-form .form-group {
+    margin-bottom: 20px;
+}
+
+.sidebar-form label {
+    display: block;
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.sidebar-form input[type="text"],
+.sidebar-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #262626;
+    border: 1px solid #404040;
+    border-radius: 6px;
+    color: white;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.sidebar-form input:focus {
+    border-color: red;
+    outline: none;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 30px;
+    color: #aaa;
+}
+
+.form-options a {
+    color: red;
+    text-decoration: none;
+}
+
+.btn-submit-login {
+    width: 100%;
+    padding: 14px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-submit-login:hover {
+    background-color: rgb(200, 0, 0);
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1999;
+    display: none;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}

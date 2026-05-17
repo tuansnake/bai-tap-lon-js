@@ -1,0 +1,155 @@
+/* Thiết lập chung cho toàn bộ trang */
+body {
+    background-color: rgb(26, 26, 26);
+    color: white;
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Khung bọc Card Profile */
+.profile-container {
+    background-color: rgb(13, 13, 13);
+    border: 1px solid #333;
+    border-radius: 16px;
+    width: 450px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+}
+
+/* Nút quay lại trang chủ góc trên bên trái */
+.btn-back {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-back:hover {
+    color: red;
+}
+
+.profile-header h2 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.profile-header h2 span {
+    color: red;
+}
+
+/* Khung bọc Avatar tròn */
+.avatar-wrapper {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px auto;
+}
+
+.avatar-large {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid red;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+/* Nút icon camera đổi ảnh nhỏ */
+.change-avatar-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+    border: 2px solid rgb(13, 13, 13);
+    transition: transform 0.2s;
+}
+
+.change-avatar-icon:hover {
+    transform: scale(1.1);
+}
+
+.user-name {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 10px 0 5px 0;
+}
+
+.user-role {
+    color: red;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+/* Danh sách chi tiết thông tin dạng dòng */
+.profile-info-list {
+    text-align: left;
+    margin-bottom: 35px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #222;
+    font-size: 15px;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: #888;
+    font-weight: normal;
+}
+
+.info-value {
+    color: white;
+    font-weight: bold;
+}
+
+/* Nút Chỉnh sửa ở dưới cùng */
+.btn-edit-profile {
+    background-color: transparent;
+    color: white;
+    border: 2px solid red;
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-edit-profile:hover {
+    background-color: red;
+    color: white;
+}
