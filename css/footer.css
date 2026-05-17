@@ -1,11 +1,14 @@
 /* =========================== MAIN FOOTER =========================== */
 .main-footer {
-    background-color: #111111; 
-    color: #888888; 
+    background-color: #111111;
+    color: #888888;
     font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
     padding: 60px 0 40px 0;
     font-size: 14px;
     line-height: 1.6;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden; /* FIX: chặn tràn ngang từ footer */
 }
 
 .footer-container {
@@ -15,24 +18,28 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     gap: 40px;
+    box-sizing: border-box;
+    width: 100%; /* FIX: giới hạn chiều rộng */
 }
 
 /* --- Phân hệ các cột bên trái --- */
 .footer-links {
     display: flex;
-    gap: 60px; 
+    gap: 40px; /* FIX: giảm từ 60px xuống để không bị tràn ở màn hình trung bình */
     flex: 1;
-    min-width: 300px;
+    min-width: 0; /* FIX: bỏ min-width: 280px cứng → cho phép co lại */
+    flex-wrap: wrap; /* FIX: tự động wrap khi hẹp */
 }
 
 .footer-col {
-    min-width: 140px;
+    min-width: 100px; /* FIX: giảm từ 120px */
+    flex: 1;
 }
 
 .footer-col h3 {
-    color: #cccccc; 
+    color: #cccccc;
     font-size: 14px;
     font-weight: 800;
     margin-top: 0;
@@ -56,9 +63,7 @@
     transition: color 0.2s ease;
 }
 
-.footer-col ul li a:hover {
-    color: #ffffff;
-}
+.footer-col ul li a:hover { color: #ffffff; }
 
 .extra-heading {
     margin-top: 30px;
@@ -72,17 +77,16 @@
     transition: color 0.2s;
 }
 
-.extra-heading a:hover {
-    color: #ffffff;
-}
+.extra-heading a:hover { color: #ffffff; }
 
 /* --- Phân hệ thương hiệu bên phải --- */
 .footer-brand {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; 
+    align-items: flex-end;
     text-align: right;
-    min-width: 250px;
+    min-width: 0; /* FIX: bỏ min-width: 250px cứng */
+    flex-shrink: 0; /* Không để brand bị nén */
 }
 
 .footer-logo {
@@ -90,17 +94,12 @@
     font-weight: 800;
     letter-spacing: 1px;
     margin-bottom: 20px;
+    white-space: nowrap; /* FIX: giữ logo không bị xuống dòng */
 }
 
-.footer-logo .white-text {
-    color: #ffffff;
-}
+.footer-logo .white-text { color: #ffffff; }
+.footer-logo .red-text   { color: red; }
 
-.footer-logo .red-text {
-    color: red;
-}
-
-/* Khung chứa các icon */
 .social-icons {
     display: flex;
     gap: 20px;
@@ -108,8 +107,8 @@
 }
 
 .social-icons .icon {
-    color: #888888; 
-    font-size: 24px; 
+    color: #888888;
+    font-size: 24px;
     text-decoration: none;
     transition: color 0.3s ease, transform 0.2s ease;
 }
@@ -125,9 +124,7 @@
     margin: 0 0 20px 0;
 }
 
-.brand-links li {
-    margin-bottom: 6px;
-}
+.brand-links li { margin-bottom: 6px; }
 
 .brand-links li a {
     color: #cccccc;
@@ -136,20 +133,107 @@
     transition: color 0.2s;
 }
 
-.brand-links li a:hover {
-    color: #ffffff;
-}
+.brand-links li a:hover { color: #ffffff; }
 
-/* Phần bản quyền */
 .copyright {
     font-size: 12px;
     color: #666666;
 }
 
-.copyright p {
-    margin: 3px 0;
+.copyright p { margin: 3px 0; }
+.copyright strong { color: #888888; }
+
+/* ========================================================
+   RESPONSIVE: TABLET (992px trở xuống)
+   FIX: thêm breakpoint trung bình còn thiếu trong bản gốc
+   ======================================================== */
+@media (max-width: 992px) {
+    .footer-container {
+        gap: 30px;
+    }
+
+    .footer-links {
+        gap: 25px;
+    }
+
+    .footer-logo {
+        font-size: 26px;
+    }
 }
 
-.copyright strong {
-    color: #888888;
+/* ========================================================
+   RESPONSIVE: ĐIỆN THOẠI (768px trở xuống)
+   ======================================================== */
+@media (max-width: 768px) {
+    .main-footer {
+        padding: 40px 0 30px 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 25px;
+        padding: 0 15px; /* FIX: padding hẹp hơn trên mobile */
+    }
+
+    /* FIX: xóa min-width cứng, dùng width: 100% */
+    .footer-links,
+    .footer-brand,
+    .footer-col {
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    .footer-links {
+        flex-direction: row; /* FIX: giữ các cột nằm ngang thay vì dọc */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .footer-col {
+        min-width: 130px !important;
+        flex: 0 1 auto;
+        text-align: center;
+    }
+
+    .footer-brand {
+        align-items: center;
+        text-align: center;
+        border-top: 1px solid #222;
+        padding-top: 20px;
+    }
+
+    .footer-logo {
+        font-size: 28px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* ========================================================
+   RESPONSIVE: ĐIỆN THOẠI RẤT NHỎ (480px trở xuống)
+   ======================================================== */
+@media (max-width: 480px) {
+    .footer-links {
+        flex-direction: column; /* Chuyển về dọc khi quá hẹp */
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer-col {
+        min-width: 0 !important;
+        width: auto !important;
+    }
+
+    .footer-logo {
+        font-size: 24px;
+    }
+
+    .social-icons .icon {
+        font-size: 20px;
+    }
 }

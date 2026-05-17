@@ -1,0 +1,322 @@
+/* =========================== GLOBAL TỐI ƯU =========================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(26, 26, 26);
+    padding: 0;
+    margin: 0;
+    padding-top: 80px; 
+    overflow-x: hidden; /* Cấm tuyệt đối cuộn ngang */
+    width: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* =========================== SLIDE =========================== */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 500px;
+    margin: 30px auto; 
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.slide {
+    width: 100%;
+    flex: 0 0 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+    color: #fff;
+    z-index: 3;
+}
+
+.slide-content .category {
+    background-color: #ff4500;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.slide-content h2 {
+    font-size: clamp(20px, 4vw, 28px); 
+    margin: 10px 0;
+}
+
+.slide-content p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.slide-content .btn-read-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00bcd4;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* =========================== CÁC TIÊU ĐỀ DÙNG CHUNG =========================== */
+.cata, .cata_2, .cata_3, .intro_cata {
+    font-size: clamp(22px, 4vw, 32px); 
+    font-weight: bold;
+    font-family: system-ui, -apple-system, sans-serif;
+    display: block;
+    text-align: left;
+    color: white;
+    grid-column: 1 / -1; 
+    margin-bottom: 20px;
+}
+
+.cata a, .cata_2 a, .cata_3 a, .intro_cata a {
+    color: white;
+    text-decoration: none;
+}
+
+.title, .title_2, .title_3, .title_side, .intro_title {
+    display: block;
+    color: white;
+    font-family: Inter, Roboto, Arial, sans-serif;
+    font-weight: 900;
+}
+
+.title a, .title_2 a, .title_3 a, .title_side a, .intro_title a {
+    color: white;
+    text-decoration: none;
+    background-image: linear-gradient(#2139b3, #2139b3); 
+    background-repeat: no-repeat;
+    background-position: 0 100%; 
+    background-size: 0% 4px; 
+    transition: background-size 0.3s;
+}
+
+.title a:hover, .title_2 a:hover, .title_3 a:hover, .title_side a:hover, .intro_title a:hover {
+    background-size: 100% 4px;
+}
+
+/* =========================== THIẾT LẬP KHUNG WRAPPER CHUNG =========================== */
+.game_wrapper, .game_wrapper_2, .game_wrapper_3, .game_wrapper_intro {
+    width: 100%; 
+    padding: 40px 0;
+    box-sizing: border-box;
+}
+
+.game_wrapper { background-color: rgb(26, 26, 26); }
+.game_wrapper_2 { background-color: rgb(26, 26, 26); }
+.game_wrapper_3 { background-color: rgb(6, 6, 6); }
+.game_wrapper_intro { background-color: rgb(6, 6, 6); }
+
+/* Khóa chiều rộng nội dung tối đa, luôn căn giữa */
+.game_list, .game_list_2, .layout_3, .intro_layout {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 20px; 
+    width: 100%;
+}
+
+/* =========================== BODY 3 ẢNH =========================== */
+.game_list {
+    display: grid;
+    /* Dùng minmax để tự co bóp: nếu đủ chỗ thì 3 cột, hẹp thì tự xuống dòng */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 30px;
+}
+
+.thumb img {
+    width: 100%; 
+    height: auto;
+    aspect-ratio: 3/4; 
+    display: block;
+    object-fit: cover;
+    transition: 0.3s;
+}
+.title { font-size: 22px; margin: 15px 0; }
+
+/* =========================== BODY 4 ẢNH =========================== */
+.game_list_2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 30px;
+}
+
+.thumb_2 img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    display: block;
+    object-fit: cover;
+    transition: 0.3s;
+}
+.title_2 { font-size: 20px; margin: 15px 0; }
+
+/* =========================== BODY CHIA 2 PHẦN (TIN TỨC) =========================== */
+.layout_3 {
+    display: grid;
+    /* Thay đổi px cứng thành phân số fr */
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); 
+    gap: 40px;
+}
+
+.news_left {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 25px;
+}
+
+.thumb_3 img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    display: block;
+    object-fit: cover;
+    transition: 0.3s;
+}
+.title_3 { font-size: 18px; margin: 10px 0; line-height: 1.4; }
+
+.news_right {
+    display: flex;
+    flex-direction: column;
+}
+.post_item_side {
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+.post_item_side:first-child { padding-top: 0; }
+.post_item_side:last-child { border-bottom: none; }
+.title_side { font-size: 16px; line-height: 1.5; }
+
+/* =========================== GIỚI THIỆU =========================== */
+.intro_grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 40px;
+}
+
+.intro_thumb_wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.intro_img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.feature_img_ratio {
+    width: 100%;
+    aspect-ratio: 4/5; /* Scale ảnh to vuông vắn, KHÔNG dùng height px */
+    height: auto;
+}
+
+.intro_badge {
+    position: absolute;
+    top: 15px; left: 15px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    z-index: 2;
+}
+.intro_badge.purple { background-color: #a662eb; box-shadow: 0 0 10px #a662eb; }
+
+.intro_sub_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Bài viết tự động xếp sát nhau */
+    gap: 20px;
+}
+
+.intro_sub_card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding-bottom: 20px; 
+    border-bottom: 1px solid #222;
+}
+.intro_sub_card:last-child { border-bottom: none; padding-bottom: 0; }
+
+.sub_img_ratio {
+    width: 180px; 
+    flex-shrink: 0;
+    aspect-ratio: 16/9;
+}
+
+.intro_title.large { font-size: 24px; margin-top: 15px; }
+.intro_title.small { font-size: 18px; margin: 0; }
+
+/* Hiệu ứng Hover Ảnh */
+.thumb img:hover, .thumb_2 img:hover, .thumb_3 img:hover, .intro_img:hover {
+    opacity: 0.7;
+}
+
+/* ========================================================================
+   GIAO DIỆN TỰ ĐỘNG CHUYỂN HÀNG DỌC KHI MÀN HÌNH NHỎ
+   ======================================================================== */
+@media (max-width: 992px) {
+    /* Đưa layout tin tức và giới thiệu xuống thành 1 cột */
+    .layout_3, .intro_grid { 
+        grid-template-columns: 1fr; 
+    }
+    .feature_img_ratio { 
+        aspect-ratio: 16/9; /* Ảnh to chuyển thành dạng ngang */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Điều chỉnh Slide cho vừa màn hình điện thoại */
+    .slider-container {
+        width: 90%;
+        height: 250px;
+        border-radius: 8px;
+    }
+    .slide-content { padding: 15px; }
+    .slide-content h2 { font-size: 16px; }
+    .slide-content p { display: none; }
+    .slide-content .btn-read-more { padding: 8px 15px; font-size: 14px; }
+
+    /* Thu nhỏ khoảng cách padding */
+    .game_wrapper, .game_wrapper_2, .game_wrapper_3, .game_wrapper_intro {
+        padding: 20px 0;
+    }
+
+    /* Đảm bảo bài viết nhỏ list ngang */
+    .intro_sub_card { flex-direction: row; }
+    .sub_img_ratio { width: 120px; }
+    .intro_title.small { font-size: 15px; }
+}

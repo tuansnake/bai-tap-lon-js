@@ -2,18 +2,18 @@
 .navbar {
     color: white;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 10px 40px;
+    flex-wrap: wrap; /* Cho phép các thành phần tự rớt dòng khi thiếu chỗ */
+    align-items: center;      
+    padding: 10px 40px; /* Đổi thành padding để navbar tự động giãn chiều cao */
     margin: 0;
     background-color: rgb(13, 13, 13);
-    min-height: 80px;
+    min-height: 80px; /* Đảm bảo chiều cao tối thiểu */
     position: fixed;
-    width: 100%;
+    width: 100%;              
     top: 0;
-    left: 0;
+    left: 0;                  
     z-index: 1000;
-    box-sizing: border-box !important;
+    box-sizing: border-box !important; 
 }
 
 .logo {
@@ -29,12 +29,12 @@
 .nav_links {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Cho phép các chữ Game, Esports... rớt dòng nếu hẹp */
     align-items: center;
     font-size: 18px;
     margin: 0;
     padding: 0;
-    gap: 20px;
+    gap: 20px; /* Dùng gap thay cho margin-left để tự động căn khoảng cách */
 }
 
 .nav_links li {
@@ -44,7 +44,7 @@
 .nav_links a {
     text-decoration: none;
     color: white;
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important; 
     white-space: nowrap;
 }
 
@@ -58,10 +58,9 @@
 
 /* =========================== AUTHENTICATION & SIDEBAR =========================== */
 .auth-container {
-    margin-left: auto;
+    margin-left: auto; /* Tự động đẩy cụm đăng nhập/avatar sang góc phải */
     display: flex;
     align-items: center;
-    flex-shrink: 0; /* FIX: không để auth bị nén */
 }
 
 .btn-login {
@@ -72,7 +71,7 @@
     font-size: 16px;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
-    border-radius: 25px;
+    border-radius: 25px; 
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     white-space: nowrap;
@@ -105,7 +104,7 @@
     border: 1px solid #333;
     border-radius: 8px;
     width: 150px;
-    display: none;
+    display: none; 
     flex-direction: column;
     overflow: hidden;
     z-index: 1010;
@@ -139,13 +138,13 @@
 .login-sidebar {
     position: fixed;
     top: 0;
-    right: -400px;
+    right: -400px; 
     width: 350px;
     height: 100vh;
     background-color: rgb(18, 18, 18);
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-    z-index: 2000;
-    transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 2000; 
+    transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
     padding: 30px;
     box-sizing: border-box;
     color: white;
@@ -259,84 +258,27 @@
 }
 
 /* ========================================================
-   RESPONSIVE: TABLET (993px trở xuống)
-   — Navbar chuyển thành 2 hàng:
-     Hàng 1: Logo bên trái + Auth bên phải
-     Hàng 2: Nav links căn giữa
+   XỬ LÝ RESPONSIVE THU NHỎ & ĐIỆN THOẠI
    ======================================================== */
 @media (max-width: 992px) {
+    /* Khi thu nhỏ máy tính/iPad: Đẩy thanh chữ xuống dưới, nằm giữa */
     .navbar {
         padding: 10px 20px !important;
-        /* Không set justify-content để auto margin của auth hoạt động đúng */
-        justify-content: flex-start;
-    }
-
-    .logo {
-        /* Logo bám trái, không margin-right: auto để còn chỗ cho auth */
-        margin-right: 0;
-        flex: 1; /* Chiếm phần còn lại, đẩy auth sang phải */
-    }
-
-    .auth-container {
-        /* margin-left: auto đã có từ desktop, tiếp tục đẩy sang phải */
-        margin-left: auto;
-    }
-
-    .nav_links {
-        width: 100%;         /* Ép xuống hàng 2 */
         justify-content: center;
-        order: 3;
-        margin-top: 8px;
-        padding-bottom: 4px; /* Thêm padding dưới cho hàng 2 */
+    }
+    .nav_links {
+        width: 100%; /* Ép menu chữ rớt xuống hàng thứ 2 */
+        justify-content: center; /* Căn giữa */
+        order: 3; /* Đẩy xuống vị trí dưới cùng */
+        margin-top: 10px;
         gap: 15px;
-        font-size: 16px;
     }
 }
 
-/* ========================================================
-   RESPONSIVE: ĐIỆN THOẠI (768px trở xuống)
-   ======================================================== */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 8px 15px !important;
-    }
-
-    .logo {
-        font-size: 22px !important;
-    }
-
-    .nav_links {
-        font-size: 13px !important;
-        gap: 10px !important;
-    }
-
-    .btn-login {
-        padding: 7px 14px !important;
-        font-size: 13px !important;
-    }
-
-    /* Sidebar đăng nhập full màn hình trên điện thoại */
-    .login-sidebar {
-        width: 100% !important;
-        right: -100%;
-    }
-}
-
-/* ========================================================
-   RESPONSIVE: ĐIỆN THOẠI RẤT NHỎ (480px trở xuống)
-   ======================================================== */
-@media (max-width: 480px) {
-    .logo {
-        font-size: 20px !important;
-    }
-
-    .nav_links {
-        font-size: 12px !important;
-        gap: 8px !important;
-    }
-
-    .btn-login {
-        padding: 6px 10px !important;
-        font-size: 12px !important;
-    }
+    /* Màn hình điện thoại */
+    .logo { font-size: 24px !important; margin-right: auto;}
+    .nav_links { font-size: 14px !important; gap: 10px !important; }
+    .btn-login { padding: 6px 12px !important; font-size: 13px !important; }
+    .login-sidebar { width: 100% !important; right: -100%; }
 }

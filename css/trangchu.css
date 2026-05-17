@@ -1,26 +1,30 @@
+/* =========================== GLOBAL TỐI ƯU =========================== */
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: rgb(26, 26, 26);
-    padding: 0px;
-    margin: 0px;
-    padding-top: 50px;
+    padding: 0;
+    margin: 0;
+    /* FIX: padding-top khớp với chiều cao navbar 1 hàng (desktop) */
+    padding-top: 80px;
+    overflow-x: hidden;
+    width: 100%;
 }
 
-@media (max-width: 768px) {
-    nav ul { display: none; }
-}
-
-/* Hiệu ứng cuộn mượt khi click nhảy mục */
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
-/* =========================== SILDE =========================== */
+/* =========================== SLIDE =========================== */
 .slider-container {
     position: relative;
     width: 100%;
     max-width: 1200px;
     height: 500px;
-    margin: 70px auto;
+    margin: 30px auto;
     overflow: hidden;
     border-radius: 12px;
 }
@@ -29,7 +33,7 @@ html {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .slide {
@@ -43,7 +47,6 @@ html {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     display: block;
 }
 
@@ -56,7 +59,6 @@ html {
     background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
     color: #fff;
     z-index: 3;
-    box-sizing: border-box;
 }
 
 .slide-content .category {
@@ -69,7 +71,7 @@ html {
 }
 
 .slide-content h2 {
-    font-size: 28px;
+    font-size: clamp(18px, 3.5vw, 28px);
     margin: 10px 0;
 }
 
@@ -89,250 +91,163 @@ html {
     border-radius: 5px;
 }
 
+/* Nút điều hướng slide */
 .nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0,0,0,0.5);
     color: white;
     border: none;
-    font-size: 24px;
-    padding: 15px 20px;
+    padding: 10px 16px;
+    font-size: 20px;
     cursor: pointer;
-    border-radius: 50%;
-    z-index: 10;
-    transition: background 0.3s;
+    z-index: 4;
+    border-radius: 4px;
+    transition: background 0.2s;
 }
-
-.nav-btn:hover { background-color: rgba(0, 0, 0, 0.8); }
-.prev { left: 20px; }
-.next { right: 20px; }
+.nav-btn:hover { background: rgba(0,0,0,0.8); }
+.nav-btn.prev { left: 10px; }
+.nav-btn.next { right: 10px; }
 
 .dots-container {
     position: absolute;
-    bottom: 20px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
-    z-index: 10;
+    gap: 8px;
+    z-index: 4;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
-    background-color: rgba(255, 255, 255, 0.5);
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
+    background: rgba(255,255,255,0.5);
     cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
+    transition: background 0.3s;
+}
+.dot.active { background: white; }
+
+/* =========================== CÁC TIÊU ĐỀ DÙNG CHUNG =========================== */
+.cata, .cata_2, .cata_3, .intro_cata {
+    font-size: clamp(20px, 3.5vw, 32px);
+    font-weight: bold;
+    font-family: system-ui, -apple-system, sans-serif;
+    display: block;
+    text-align: left;
+    color: white;
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
 }
 
-.dot.active {
-    background-color: #00bcd4;
-    transform: scale(1.2);
+.cata a, .cata_2 a, .cata_3 a, .intro_cata a {
+    color: white;
+    text-decoration: none;
+}
+
+.title, .title_2, .title_3, .title_side, .intro_title {
+    display: block;
+    color: white;
+    font-family: Inter, Roboto, Arial, sans-serif;
+    font-weight: 900;
+}
+
+.title a, .title_2 a, .title_3 a, .title_side a, .intro_title a {
+    color: white;
+    text-decoration: none;
+    background-image: linear-gradient(#2139b3, #2139b3);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 4px;
+    transition: background-size 0.3s;
+}
+
+.title a:hover, .title_2 a:hover, .title_3 a:hover, .title_side a:hover, .intro_title a:hover {
+    background-size: 100% 4px;
+}
+
+/* =========================== THIẾT LẬP KHUNG WRAPPER CHUNG =========================== */
+.game_wrapper, .game_wrapper_2, .game_wrapper_3, .game_wrapper_intro {
+    width: 100%;
+    padding: 40px 0;
+    box-sizing: border-box;
+}
+
+.game_wrapper     { background-color: rgb(26, 26, 26); }
+.game_wrapper_2   { background-color: rgb(26, 26, 26); }
+.game_wrapper_3   { background-color: rgb(6, 6, 6); }
+.game_wrapper_intro { background-color: rgb(6, 6, 6); }
+
+/* Nội dung tối đa 1200px, luôn căn giữa */
+.game_list, .game_list_2, .layout_3, .intro_layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box; /* FIX: tránh tràn khi có padding */
 }
 
 /* =========================== BODY 3 ẢNH =========================== */
-.cata {
-    font-size: xx-large;
-    font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    display: block;
-    text-align: left;
-    grid-column: 1 / 4;
-    color: white;
-    margin-bottom: -20px;
-}
-
-.cata a {
-    color: white;
-    text-decoration: none;
-}
-
-.game_wrapper {
-    background-color: rgb(26, 26, 26);
-    padding: 20px 0;
-    margin-top: 30px;
-}
-
 .game_list {
     display: grid;
-    grid-template-columns: repeat(3, 300px);
-    justify-content: center;
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 30px;
 }
 
 .thumb img {
-    width: 300px;
-    height: 400px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
     display: block;
     object-fit: cover;
-    transition: 0.3s;
+    transition: opacity 0.3s;
 }
 
-.thumb img:hover {
-    opacity: 0.7;
-}
-
-.title {
-    display: block;
-    color: white;
-    font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-weight: 900;
-    font-size: 23px;
-    margin: 10px 0;
-}
-
-.title a {
-    color: white;
-    text-decoration: none;
-    background-image: linear-gradient(#2139b3, #2139b3); 
-    background-repeat: no-repeat;
-    background-position: 0 100%; 
-    background-size: 0% 5px; 
-    transition: background-size 0.3s;
-}
-
-.title a:hover {
-    background-size: 100% 5px;
-}
+.title { font-size: clamp(16px, 2vw, 22px); margin: 12px 0; }
 
 /* =========================== BODY 4 ẢNH =========================== */
-.cata_2 {
-    font-size: xx-large;
-    font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    display: block;
-    text-align: left;
-    grid-column: 1 / 5;
-    color: white;
-    margin-bottom: -20px;
-}
-
-.cata_2 a {
-    color: white;
-    text-decoration: none;
-}
-
-.game_wrapper_2 {
-    background-color: rgb(26, 26, 26);
-    padding: 20px 0;
-    margin-top: 30px;
-}
-
 .game_list_2 {
     display: grid;
-    grid-template-columns: repeat(4, 200px);
-    justify-content: center;
-    gap: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 25px;
 }
 
 .thumb_2 img {
-    width: 220px;
-    height: 150px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
     display: block;
     object-fit: cover;
-    transition: 0.3s;
+    transition: opacity 0.3s;
 }
 
-.thumb_2 img:hover {
-    opacity: 0.7;
-}
+.title_2 { font-size: clamp(14px, 1.8vw, 20px); margin: 12px 0; }
 
-.title_2 {
-    display: block;
-    color: white;
-    font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-weight: 900;
-    font-size: 23px;
-    margin: 10px 0;
-}
-
-.title_2 a {
-    color: white;
-    text-decoration: none;
-    background-image: linear-gradient(#2139b3, #2139b3); 
-    background-repeat: no-repeat;
-    background-position: 0 100%; 
-    background-size: 0% 5px; 
-    transition: background-size 0.3s;
-}
-
-.title_2 a:hover {
-    background-size: 100% 5px;
-}
-
-/* =========================== BODY CHIA 2 PHẦN =========================== */
-.game_wrapper_3 {
-    background-color: rgb(26, 26, 26);
-    padding: 20px 0;
-    margin-top: 10px;
-}
-
+/* =========================== BODY CHIA 2 PHẦN (TIN TỨC) =========================== */
 .layout_3 {
     display: grid;
-    grid-template-columns: 550px 350px;
-    justify-content: center;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
     gap: 40px;
-}
-
-.cata_3 {
-    font-size: xx-large;
-    font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    display: block;
-    text-align: left;
-    grid-column: 1 / 3;
-    color: white;
-    margin-bottom: -20px;
-}
-
-.cata_3 a {
-    color: white;
-    text-decoration: none;
 }
 
 .news_left {
     display: grid;
-    grid-template-columns: repeat(2, 250px);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: 20px;
 }
 
 .thumb_3 img {
     width: 100%;
-    height: 220px;
+    height: auto;
+    aspect-ratio: 16/9;
     display: block;
     object-fit: cover;
-    transition: 0.3s;
+    transition: opacity 0.3s;
 }
 
-.thumb_3 img:hover {
-    opacity: 0.73;
-}
-
-.title_3 {
-    display: block;
-    color: white;
-    font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-weight: 900;
-    font-size: 22px;
-    margin: 10px 0;
-    line-height: 1.4;
-}
-
-.title_3 a {
-    color: white;
-    text-decoration: none;
-    background-image: linear-gradient(#2139b3, #2139b3); 
-    background-repeat: no-repeat;
-    background-position: 0 100%; 
-    background-size: 0% 5px; 
-    transition: background-size 0.3s;
-}
-
-.title_3 a:hover {
-    background-size: 100% 5px;
-}
+.title_3 { font-size: clamp(13px, 1.6vw, 18px); margin: 10px 0; line-height: 1.4; }
 
 .news_right {
     display: flex;
@@ -343,78 +258,21 @@ html {
     padding: 15px 0;
     border-bottom: 1px solid #333;
 }
-
-.post_item_side:first-child {
-    padding-top: 0;
-}
-
-.post_item_side:last-child {
-    border-bottom: none;
-}
-
-.title_side {
-    display: block;
-    color: white;
-    font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-.title_side a {
-    color: white;
-    text-decoration: none;
-    background-image: linear-gradient(#2139b3, #2139b3); 
-    background-repeat: no-repeat;
-    background-position: 0 100%; 
-    background-size: 0% 3px; 
-    transition: background-size 0.3s;
-}
-
-.title_side a:hover {
-    background-size: 100% 3px;
-}
+.post_item_side:first-child { padding-top: 0; }
+.post_item_side:last-child { border-bottom: none; }
+.title_side { font-size: clamp(13px, 1.4vw, 16px); line-height: 1.5; }
 
 /* =========================== GIỚI THIỆU =========================== */
-.game_wrapper_intro {
-    background-color: rgb(6, 6, 6);
-    padding: 30px 0;
-    margin-top: 30px;
-    width: 100%;
-}
-
-.intro_layout {
-    max-width: 940px;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-
-.intro_cata {
-    font-size: xx-large;
-    font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    display: block;
-    text-align: left;
-    color: white;
-    margin-bottom: 25px;
-}
-
-.intro_cata a {
-    color: white;
-    text-decoration: none;
-}
-
 .intro_grid {
     display: grid;
-    grid-template-columns: 490px 410px;
-    justify-content: center;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     gap: 40px;
 }
 
 .intro_thumb_wrapper {
     position: relative;
     overflow: hidden;
-    background-color: #000000;
+    background-color: #000;
 }
 
 .intro_img {
@@ -422,92 +280,188 @@ html {
     height: 100%;
     display: block;
     object-fit: cover;
-    transition: 0.3s;
-}
-
-.intro_img:hover {
-    opacity: 0.73;
-}
-
-.intro_feature_card {
-    display: flex;
-    flex-direction: column;
+    transition: opacity 0.3s;
 }
 
 .feature_img_ratio {
     width: 100%;
-    height: 600px; 
+    aspect-ratio: 4/5;
+    height: auto;
 }
 
 .intro_badge {
     position: absolute;
     top: 15px;
     left: 15px;
-    width: 8px;
-    height: 8px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     z-index: 2;
 }
-
-.intro_badge.purple {
-    background-color: #a662eb;
-    box-shadow: 0 0 10px #a662eb;
-}
+.intro_badge.purple { background-color: #a662eb; box-shadow: 0 0 10px #a662eb; }
 
 .intro_sub_list {
     display: flex;
     flex-direction: column;
-    height: 600px;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 20px;
 }
 
 .intro_sub_card {
     display: flex;
     gap: 20px;
     align-items: flex-start;
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
     border-bottom: 1px solid #222;
-    box-sizing: border-box;
 }
+.intro_sub_card:last-child { border-bottom: none; padding-bottom: 0; }
 
 .sub_img_ratio {
-    width: 210px;
-    height: 130px;
+    width: 160px;
     flex-shrink: 0;
+    aspect-ratio: 16/9;
 }
 
-.intro_sub_content {
-    flex: 1;
+.intro_title.large { font-size: clamp(18px, 2.2vw, 24px); margin-top: 15px; }
+.intro_title.small { font-size: clamp(14px, 1.6vw, 18px); margin: 0; }
+
+/* Hiệu ứng Hover Ảnh */
+.thumb img:hover, .thumb_2 img:hover, .thumb_3 img:hover, .intro_img:hover {
+    opacity: 0.7;
 }
 
-.intro_title {
-    margin: 10px 0 0 0;
-    font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-weight: 900;
+/* ========================================================
+   RESPONSIVE: TABLET (992px trở xuống)
+   — Navbar chuyển sang 2 hàng → body cần padding-top lớn hơn
+   ======================================================== */
+@media (max-width: 992px) {
+    /* FIX QUAN TRỌNG: Đồng bộ với navbar 2 hàng
+       Hàng 1 (logo+auth): ~80px | Hàng 2 (nav_links): ~38px | Tổng: ~118px → dùng 125px */
+    body {
+        padding-top: 125px;
+    }
+
+    /* Layout tin tức và giới thiệu chuyển về 1 cột */
+    .layout_3, .intro_grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* Ảnh feature chuyển sang dạng ngang khi 1 cột */
+    .feature_img_ratio {
+        aspect-ratio: 16/9;
+    }
+
+    .game_wrapper, .game_wrapper_2, .game_wrapper_3, .game_wrapper_intro {
+        padding: 30px 0;
+    }
+
+    .sub_img_ratio {
+        width: 140px;
+    }
 }
 
-.intro_title.large {
-    font-size: 23px;
-    line-height: 1.35;
+/* ========================================================
+   RESPONSIVE: ĐIỆN THOẠI (768px trở xuống)
+   ======================================================== */
+@media (max-width: 768px) {
+    /* FIX: navbar vẫn 2 hàng nhưng font nhỏ hơn → chiều cao ~110px → dùng 115px */
+    body {
+        padding-top: 115px;
+    }
+
+    /* Slider thu nhỏ */
+    .slider-container {
+        width: 92%;
+        height: 220px;
+        border-radius: 8px;
+        margin: 15px auto;
+    }
+
+    .slide-content {
+        padding: 12px 15px;
+    }
+
+    .slide-content h2 {
+        font-size: 14px;
+        margin: 6px 0;
+    }
+
+    .slide-content p {
+        display: none;
+    }
+
+    .slide-content .btn-read-more {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .nav-btn {
+        padding: 7px 12px;
+        font-size: 16px;
+    }
+
+    /* Thu nhỏ khoảng cách padding section */
+    .game_wrapper, .game_wrapper_2, .game_wrapper_3, .game_wrapper_intro {
+        padding: 20px 0;
+    }
+
+    .game_list, .game_list_2, .layout_3, .intro_layout {
+        padding: 0 15px;
+    }
+
+    /* Đảm bảo bài viết nhỏ nằm ngang */
+    .intro_sub_card {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .sub_img_ratio {
+        width: 110px;
+    }
+
+    .intro_title.small { font-size: 14px; }
+    .intro_title.large { font-size: 18px; }
 }
 
-.intro_title.small {
-    font-size: 20px;
-    line-height: 1.4;
-    margin-top: 0;
-}
+/* ========================================================
+   RESPONSIVE: ĐIỆN THOẠI RẤT NHỎ (480px trở xuống)
+   ======================================================== */
+@media (max-width: 480px) {
+    /* Navbar vẫn 2 hàng nhưng font nhỏ hơn → ~105px → dùng 110px */
+    body {
+        padding-top: 110px;
+    }
 
-.intro_title a {
-    color: white;
-    text-decoration: none;  
-    display: inline;
-    background-image: linear-gradient(#2139b3, #2139b3);
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    background-size: 0% 5px;
-    transition: background-size 0.3s;
-}
+    .slider-container {
+        width: 95%;
+        height: 190px;
+    }
 
-.intro_title a:hover {
-    background-size: 100% 5px;
+    .slide-content h2 {
+        font-size: 13px;
+    }
+
+    /* Section padding hẹp hơn */
+    .game_list, .game_list_2, .layout_3, .intro_layout {
+        padding: 0 12px;
+        gap: 15px;
+    }
+
+    .game_list   { gap: 20px; }
+    .game_list_2 { gap: 15px; }
+
+    /* Bài viết phụ: ảnh nhỏ hơn */
+    .sub_img_ratio {
+        width: 90px;
+    }
+
+    .intro_sub_card {
+        gap: 10px;
+    }
+
+    /* Ẩn phần mô tả phụ bên phải tin tức khi quá hẹp — giữ news_left hiển thị đẹp */
+    .post_item_side {
+        padding: 10px 0;
+    }
 }
